@@ -1,0 +1,29 @@
+@import 'styles/variables';
+.container {
+    display: flex;
+    color: $lightPrimary;
+    width: 250px;
+    margin-left: 123px;
+    .refresh {
+        width: 109px;
+        padding-right: 33px;
+        padding-top: 32px;
+        margin: 0;
+    }
+    .timer {
+        display: flex;
+        flex-direction: column;
+        width: 100px;
+        h2{
+            margin: 0;
+            padding-top: 9px;
+            font-size: 48px;
+        }
+        p {
+            width: 100px;
+            margin: 0;
+            font-size: 14px;
+            text-align: center;
+        }
+    }
+}

@@ -1,10 +1,12 @@
-
+@import 'styles/variables';
 
 .form {
+    display: flex;
+    flex-direction: column;
     h2 {
         margin-top: 0;
         margin-bottom: 32px;
-        color: #E0E0E0;
+        color: $secondary;
         font-size: 30px;
     }
 
@@ -18,7 +20,7 @@
         height: 60px;
         border: 1px solid #ffffff;
         margin-bottom: 33px;
-        color: #E0E0E0;
+        color: $secondary;
         font-size: 16px;
         padding: 20px;
     }
@@ -32,7 +34,7 @@
         height: 60px;
         border: 1px solid #ffffff;
         margin-bottom: 33px;
-        color: #E0E0E0;
+        color: $secondary;
         font-size: 16px;
         padding: 20px;
     }
@@ -43,13 +45,19 @@
     input::placeholder {
         color: #E0E0E0;
     }
+
+    span {
+        font-size: 16px;
+        color: $primary;
+        text-align: center;
+    }
    
     .button {
         border-radius: 50px;
         width: 380px;
         height: 67px;
         border: 2px solid #FF2D04;
-        margin-top: 82px;
+        margin-top: 52px;
         background: linear-gradient(#FF2D04, #C13216);
         color: #ffffff;
         font-weight: bold;
