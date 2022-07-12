@@ -42,3 +42,43 @@
     }
 }
 
+@media only screen and (max-width: 1919px) {
+    .container {
+        .login{
+            padding-left: 13%;
+            padding-right: 13%;
+            padding-top: 9%;
+        }
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    .container {
+        .login{
+            padding-left: 11.5%;
+            padding-right: 11.5%;
+            padding-top: 6%;
+        }
+    }
+
+ }
+
+ @media only screen and (max-width: 1280px) {
+    .container {
+        .login{
+            padding-left: 10%;
+            padding-right: 10%;
+            padding-top: 5%;
+        }
+    }
+ }
+
+ @media only screen and (max-width: 1024px) {
+    .container {
+        .login{
+            padding-left: 7%;
+            padding-right: 7%;
+            padding-top: 5%;
+        }
+    }
+ }
