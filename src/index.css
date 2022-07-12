@@ -1,0 +1,16 @@
+@import url(//db.onlinewebfonts.com/c/7200c6dd8ac604abe09f5159e53a40c0?family=Mark+Pro);
+
+body {
+  
+}
+
+* {
+  font-family: 'Mark Pro', serif;
+  box-sizing: border-box;
+}
+
+#root > main.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

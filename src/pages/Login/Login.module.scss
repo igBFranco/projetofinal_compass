@@ -1,0 +1,42 @@
+
+.container {
+    display: flex;
+    flex-direction: row;
+    .login {
+        background: linear-gradient( #33383D, #1C1D20);
+        display: flex;
+        flex-direction: column;
+        width: 50vw;
+        height: 100vh;
+        p{
+            margin: 0;
+            color: #E0E0E0;
+        }
+        .greeting {
+            font-size: 60px;
+            margin-bottom: 17px;
+        }
+        .instructions {
+            width: auto;
+            font-size: 16px;
+            line-height: 20px;
+        }
+        h2 {
+            margin-bottom: 32px;
+            color: #E0E0E0;
+        }
+    }
+    .banner {
+        width: 50vw;
+        background: url('../../assets/computer.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        .logo {
+            padding-top: 35px;
+        }
+    }
+}
+
