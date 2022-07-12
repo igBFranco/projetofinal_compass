@@ -12,7 +12,6 @@ export default function Login() {
                         Para continuar navegando de forma segura, efetue o login na rede.
                     </p>
                 </div>
-                <h2>Login</h2>
                 <LoginForm/>
             </div>
             <div className={styles.banner}>
