@@ -4,9 +4,6 @@ import { useState } from 'react';
 
 export default function Weather() { 
 
-    const [lat, setLat] = useState<number>();
-    const [long, setLong] = useState<number>();
-    const url = "https://api.openweathermap.org/data/2.5/weather?q=Itaiopolis&units=metric&appid=bf0de12f9df4e3c21f2fb18a7606c041";
     const [city, setCity] = useState<string>();
     const [temp, setTemp] = useState<number>();
     
