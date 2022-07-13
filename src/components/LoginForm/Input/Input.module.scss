@@ -4,10 +4,9 @@
 .input {
     display: flex;
     flex-direction: row;
+    box-sizing: border-box;
     .inputEmail {
-        background: url('../../../assets/icon-user.svg') no-repeat right;
-        background-size: 20px;
-        background-position: 340px;
+        background-color: transparent;
         border-radius: 50px;
         width: 380px;
         height: 60px;
@@ -19,9 +18,7 @@
     }
     
     .inputPass {
-        background: url('../../../assets/icon-password.svg') no-repeat right;
-        background-size: 20px;
-        background-position: 340px;
+        background-color: transparent;
         border-radius: 50px;
         width: 380px;
         height: 60px;
@@ -31,6 +28,20 @@
         font-size: 16px;
         padding: 20px;
     }
+
+    .inputUserIcon {
+        background-image: url('../../../assets/icon-user.svg');
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: 340px;
+    }
+    
+    .inputPassIcon {
+        background-image: url('../../../assets/icon-password.svg');
+        background-repeat: no-repeat;
+        background-size: 20px;
+        background-position: 340px;
+    }
     
     input:focus {
         outline: none;
@@ -39,6 +50,26 @@
     input::placeholder {
         color: #E0E0E0;
     }    
+
+    .icon {
+        display: flex;
+    }
+
+    .iconHidden {
+        display: none;
+    }
+
+    #iconUser {
+        margin-left: 20px;
+        margin-top: 20px;
+        height: 20px;
+    }
+
+    #iconPass {
+        margin-left: 20px;
+        margin-top: 15px;
+        height: 25px;
+    }
 
 
 }

@@ -1,10 +1,12 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../../common/Context/User';
+import classNames from 'classnames';
 import styles from './Input.module.scss';
 import User from 'assets/icon-user.svg';
 
 
 export default function InputEmail() {
+    const [iconInside, setIconInside] = useState(false);
     const { email, setEmail, setEmailValid } = useContext(UserContext);
 
     function validate(email: HTMLInputElement) {
@@ -21,13 +23,28 @@ export default function InputEmail() {
 		}
     }
 
+    useEffect(()=> {
+        if(email !== ""){
+            setIconInside(true);
+        }else{
+            setIconInside(false);
+        }
+    }, [email])
+
     return(
         <div className={styles.input}>
-            <input type="email" className={styles.inputEmail} value={email} placeholder="Usuário" onChange={(event)=> (
+            <input type="email" className={classNames({
+                    [styles.inputEmail]: true,
+                    [styles.inputUserIcon]: iconInside
+                })} value={email} placeholder="Usuário" onChange={(event)=> (
                 setEmail(event.target.value),
                 validate(event.target)
-            )}/>  
-            <img src={User} alt="User Icon" className={styles.icon}/>
+            )}
+            />  
+            <img src={User} alt="User Icon" className={classNames({
+                [styles.icon]: true,
+                [styles.iconHidden]: iconInside
+            })} id={styles.iconUser}/>
         </div>
     );
 }
