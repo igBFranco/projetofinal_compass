@@ -1,1 +1,84 @@
 @import 'styles/variables';
+
+body {
+    background: linear-gradient(#FFFFFF, #F0F0F0);
+    background-image: url('../../assets/bola_logo.png');
+    background-position: 0 21.48vh;
+    background-repeat: no-repeat;
+}
+
+.container {
+    .content {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 6.97vw;
+        text-align: end;
+        margin-top: 15.37vh;
+        h2 {
+            margin: 0;
+            font-size: 36px;
+            color: $redPrimary;
+            padding: 3px;
+        }
+
+        p{
+            margin: 0;
+            font-size: 24px;
+            color: $blackSecondary;
+            padding: 3px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 64px;
+            color: $redPrimary;
+            padding: 3px;
+        }
+    }
+}
+
+@media only screen and (max-width: 1600px) {
+    .container {
+       .content {
+        right: 5vw;
+
+        h2 {
+            font-size: 30px;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        h1 {
+            font-size: 50px;
+        }
+       }
+    }
+}
+
+@media only screen and (max-width: 1366px) {
+
+    body {
+        background-position: -150px 24vh;
+    }
+
+    .container {
+       .content {
+        right: 5vw;
+
+        h2 {
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 17px;
+        }
+
+        h1 {
+            font-size: 45px;
+        }
+       }
+    }
+}

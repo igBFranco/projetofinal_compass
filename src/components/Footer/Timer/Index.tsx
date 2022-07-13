@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { ReactEventHandler, useState } from 'react';
 import styles from './Timer.module.scss';
 
 export default function Timer() {
     const [count, setCount] = useState<number>(60);
 
-    function counter(time: number = 0) {
+    function counter(time: number = 0): any{
         setTimeout(() => {
             if(time > 0) {
                 setCount(time - 1);
@@ -16,7 +16,7 @@ export default function Timer() {
     }
 
     return(
-        <footer className={styles.container} onLoad={()=>counter(count)}>
+        <section className={styles.container} onLoad={counter(count)}>
             <p className={styles.refresh}>
                 Application refresh in
             </p>
@@ -25,9 +25,9 @@ export default function Timer() {
                     {count}
                 </h2>
                 <p>
-                    seconds
+                    second{count > 1 ? 's' : ''}
                 </p>
             </div>
-        </footer>
+        </section>
     );
 }
