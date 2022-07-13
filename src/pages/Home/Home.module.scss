@@ -39,6 +39,9 @@ body {
 }
 
 @media only screen and (max-width: 1600px) {
+    body {
+        background-size: 40%;
+    }
     .container {
        .content {
         right: 5vw;
