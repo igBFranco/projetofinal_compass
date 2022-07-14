@@ -19,7 +19,7 @@ export default function Weather() {
             .then(res => res.json())
             .then(result => {
                 const { main, name } = result;
-                setCity(`${name} - SC`)
+                setCity(`${name}`)
                 setTemp(Math.round(main.temp));
                 setIsLoading(false);
             });
