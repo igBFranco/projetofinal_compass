@@ -7,26 +7,25 @@ export default function Weather() {
 
     const [city, setCity] = useState<string>();
     const [temp, setTemp] = useState<number>();
+    const [isLoading, setIsLoading] = useState(true);
     
-    
-   function fetchWeather() {
-
+    useEffect(()=>{
         navigator.geolocation.getCurrentPosition( function(position) {
             let lat = position.coords.latitude;
             let long = position.coords.longitude;        
     
+            setIsLoading(true);
             fetch(`https://api.openweathermap.org/data/2.5/weather/?lat=${lat}&lon=${long}&units=metric&APPID=bf0de12f9df4e3c21f2fb18a7606c041`)
             .then(res => res.json())
             .then(result => {
                 const { main, name } = result;
                 setCity(`${name} - SC`)
                 setTemp(Math.round(main.temp));
+                setIsLoading(false);
             });
         }, locationNotPermitted()
         );
-
-
-    }
+    }, [])
 
     function locationNotPermitted(): any {
         const url = 'https://api.openweathermap.org/data/2.5/weather?q=Brasilia&units=metric&appid=bf0de12f9df4e3c21f2fb18a7606c041';
@@ -42,7 +41,9 @@ export default function Weather() {
     }
 
     return(
-        <div className={styles.container} onLoad={()=> fetchWeather()} >
+        <div className={styles.container} >
+            { isLoading ? <Loading/> : 
+            <>
             <h3>
                 {city}
             </h3>
@@ -52,6 +53,8 @@ export default function Weather() {
                     {temp}º
                 </h2>
             </div>
+            </>
+            }
         </div>
     );
 }
