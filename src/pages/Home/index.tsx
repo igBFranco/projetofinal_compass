@@ -29,7 +29,7 @@ export default function Home() {
                     to enable our client's growth
                 </h1>
                 <p>
-                    que permitao o crescimento dos nossos clientes
+                    que permitam o crescimento dos nossos clientes
                 </p>
             </div>
             <Footer/>

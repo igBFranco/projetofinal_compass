@@ -14,7 +14,7 @@ export default function Footer() {
             <Timer/>
             <div className={styles.buttons}>
                 <div className={styles.next}>
-                    <a href="https://google.com">
+                    <a href="https://google.com" target="_blank">
                         <button className={styles.continueNavigating}>
                             Continuar Navegando
                         </button>

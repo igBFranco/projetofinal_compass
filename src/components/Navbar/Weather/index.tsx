@@ -1,6 +1,7 @@
 import styles from './Weather.module.scss';
 import cloud from 'assets/cloud.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Loading from '../Loading';
 
 export default function Weather() { 
 
@@ -8,11 +9,12 @@ export default function Weather() {
     const [temp, setTemp] = useState<number>();
     
     
-    function fetchWeather() {
-        navigator.geolocation.getCurrentPosition(function(position) {
+   function fetchWeather() {
+
+        navigator.geolocation.getCurrentPosition( function(position) {
             let lat = position.coords.latitude;
             let long = position.coords.longitude;        
-
+    
             fetch(`https://api.openweathermap.org/data/2.5/weather/?lat=${lat}&lon=${long}&units=metric&APPID=bf0de12f9df4e3c21f2fb18a7606c041`)
             .then(res => res.json())
             .then(result => {
@@ -20,7 +22,23 @@ export default function Weather() {
                 setCity(`${name} - SC`)
                 setTemp(Math.round(main.temp));
             });
-        });
+        }, locationNotPermitted()
+        );
+
+
+    }
+
+    function locationNotPermitted(): any {
+        const url = 'https://api.openweathermap.org/data/2.5/weather?q=Brasilia&units=metric&appid=bf0de12f9df4e3c21f2fb18a7606c041';
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const { main, name } = data;
+            setCity(`${name} - DF`);
+            setTemp(Math.round(main.temp));
+            }
+        )
+
     }
 
     return(
