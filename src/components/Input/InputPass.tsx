@@ -2,7 +2,7 @@ import styles from './Input.module.scss';
 import Password from 'assets/icon-password.svg';
 import classNames from 'classnames';
 import { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../../../common/Context/User';
+import { UserContext } from '../../common/Context/User';
 
 export default function InputPass() {
     const [iconInside, setIconInside] = useState(false);
