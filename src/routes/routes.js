@@ -4,7 +4,6 @@ import Home from 'pages/Home';
 import { UserProvider } from '../common/Context/User';
 import LoginForm from 'components/LoginForm';
 import RegisterForm from 'components/RegisterForm';
-
 export default function AppRouter() {
     return(
         <main className='container'>

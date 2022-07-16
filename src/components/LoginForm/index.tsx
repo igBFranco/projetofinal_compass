@@ -4,10 +4,29 @@ import styles from './LoginForm.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../common/Context/User';
+import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from 'firebase-config';
 
 export default function LoginForm() {
     const navigate = useNavigate();
-    const { emailValid, passValid } = useContext(UserContext);
+    const { emailValid, passValid, setUser, email, password, setEmail, setPassword } = useContext(UserContext);
+
+    async function login() {
+        try {
+            const user =  await signInWithEmailAndPassword(auth, email, password);
+            setEmail('');
+            setPassword('');
+            console.log(user);
+            navigate('/home');
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
+
+    })
 
     return(
         <form className={styles.form}>
@@ -20,8 +39,8 @@ export default function LoginForm() {
             </div>
             <button className={styles.button} onClick={(event)=> {
                 event.preventDefault();
+                login();
                 if(emailValid && passValid){
-                    navigate('/home');
                 }
             }}>
                 Continuar

@@ -4,21 +4,26 @@ import styles from './RegisterForm.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../common/Context/User';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { auth } from 'firebase-config';
 
 export default function RegisterForm() {
     const navigate = useNavigate();
-    const { email, password, emailValid, passValid } = useContext(UserContext);
+    const { email, password, emailValid, passValid, user, setUser } = useContext(UserContext);
 
     async function register() {
         try {
             const user =  await createUserWithEmailAndPassword(auth, email, password);
             console.log(user);
-        } catch (error) {
-            console.log(error);
+            navigate('/home');
+        } catch (error: any) {
+            console.log(error.message);
         }
     }
+
+    onAuthStateChanged(auth, (currentUser) => {
+        setUser(currentUser);
+    })
     
 
     return(
@@ -32,10 +37,9 @@ export default function RegisterForm() {
             </div>
             <button className={styles.button} onClick={(event)=> {
                 event.preventDefault();
-                if(emailValid && passValid){
-                    
-                }
-                register();
+                //if(emailValid && passValid){
+                    register();
+               // }
             }}>
                 Continuar
             </button>
