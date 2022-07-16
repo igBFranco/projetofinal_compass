@@ -3,22 +3,56 @@ import Password from 'assets/icon-password.svg';
 import classNames from 'classnames';
 import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../common/Context/User';
+import { PasswordContext } from 'common/Context/Password';
 
 export default function InputPass() {
     const [iconInside, setIconInside] = useState(false);
     const { password, setPassword, setPassValid } = useContext(UserContext);
+    const { sixChar, setSixChar, lowerCase, setLowerCase, upperCase, setUpperCase, passNumber, setPassNumber } = useContext(PasswordContext);
 
     function validate(password: HTMLInputElement) {
         let error = document.getElementById("error")! as HTMLDivElement;
 
-        if (password.value.length < 6) {
-            password.style.border = "1px solid #E9B425";
-            error.style.display = "flex";
-            setPassValid(false);
-        } else {
+        let rgex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$/;
+        let charQtd = /^.{6,}$/;
+        let charLower = /^.*[a-z].*$/;
+        let charUpper = /^.*[A-Z].*$/;
+        let num = /^.*[0-9].*$/;
+
+        if(charLower.test(password.value)) {
+            setLowerCase(true);
+        }else {
+            setLowerCase(false);
+        }
+
+        if(charQtd.test(password.value)) {
+            setSixChar(true);
+        }else {
+            setSixChar(false);
+        }
+
+
+        if(charUpper.test(password.value)) {
+            setUpperCase(true);
+        }else {
+            setUpperCase(false);
+        }
+
+        if(num.test(password.value)) {
+            setPassNumber(true);
+        }else {
+            setPassNumber(false);
+        }
+
+        if (rgex.test(password.value)) {
             password.style.border = "";
             error.style.display = "none";
             setPassValid(true);
+            
+        } else {
+            password.style.border = "1px solid #E9B425";
+            error.style.display = "flex";
+            setPassValid(false);
         }
     }
 

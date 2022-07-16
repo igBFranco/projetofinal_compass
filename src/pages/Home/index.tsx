@@ -1,9 +1,20 @@
+import { auth } from 'firebase-config';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
 import styles from './Home.module.scss'
 
 export default function Home() {
+    const user = auth.currentUser;
+    const navigate = useNavigate();
     
+    useEffect(()=> {
+        if(user === null) {
+            navigate('/', {replace: true});
+        }
+    }, [user, navigate])
+
     return(
         <div className={styles.container}>
             <Navbar/>

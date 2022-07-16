@@ -3,11 +3,50 @@
 .form {
     display: flex;
     flex-direction: column;
+    padding-top: 3rem;
     h2 {
         margin-top: 0;
         margin-bottom: 32px;
         color: $secondary;
         font-size: 30px;
+    }
+
+    .validation {
+        color: $primary;
+        background-color: $lightBlack;
+        border-radius: 20px;
+        width: 380px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        h3 {
+            margin: 0;
+            color: $lightPrimary;
+            font-size: 16px;
+            padding: 10px;
+        }
+        .validationCase {
+            display: flex;
+            span {
+                font-size: 13px;
+                padding: 10px;
+            }
+            .spanOk {
+                color: $lightPrimary;
+            }
+            .okHidden {
+                display: none;
+            }
+            .ok {
+                display: inline;
+            }
+            .validationError {
+                display: inline;
+            }
+            .validationErrorHidden {
+                display: none;
+            }
+        }
     }
 
     .error {
@@ -16,6 +55,7 @@
         align-items: center;
         text-align: center;
         width: 380px;
+        padding-top: 20px;
         span {
             font-size: 16px;
             color: $primary;
@@ -27,12 +67,20 @@
         width: 380px;
         height: 67px;
         border: 2px solid #FF2D04;
-        margin-top: 52px;
+        margin-top: 32px;
         background: linear-gradient(#FF2D04, #C13216);
         color: #ffffff;
         font-weight: bold;
         filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
         cursor: pointer;
+    }
+
+    .loginCall {
+        margin: 30px 50px;
+        display: flex;
+        .link {
+            color: $primary;
+        }
     }
     
 }

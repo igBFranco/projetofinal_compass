@@ -3,6 +3,7 @@
 .form {
     display: flex;
     flex-direction: column;
+    padding-top: 6rem;
     h2 {
         margin-top: 0;
         margin-bottom: 32px;
@@ -33,6 +34,14 @@
         font-weight: bold;
         filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
         cursor: pointer;
+    }
+
+    .registerCall {
+        margin: 30px 10px;
+        display: flex;
+        .link {
+            color: $primary;
+        }
     }
     
 }

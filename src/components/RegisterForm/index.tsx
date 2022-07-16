@@ -6,10 +6,15 @@ import { useContext } from 'react';
 import { UserContext } from '../../common/Context/User';
 import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { auth } from 'firebase-config';
+import Check from "assets/check.svg";
+import Close from "assets/close.svg";
+import classNames from 'classnames';
+import { PasswordContext } from 'common/Context/Password';
 
 export default function RegisterForm() {
     const navigate = useNavigate();
-    const { email, password, emailValid, passValid, user, setUser } = useContext(UserContext);
+    const { email, password, emailValid, passValid, setUser } = useContext(UserContext);
+    const { sixChar, lowerCase, upperCase, passNumber } = useContext(PasswordContext);
 
     async function register() {
         try {
@@ -31,6 +36,61 @@ export default function RegisterForm() {
             <h2>Cadastro</h2>
             <InputEmail/>
             <InputPass/>
+            <div className={styles.validation} id="validation">
+                <h3>A senha deve possuir:</h3>
+                <div className={styles.validationCase}>
+                    <span className={classNames({
+                        [styles.spanOk]: sixChar
+                    })}>Mínimo de 6 caracteres</span>
+                    <img src={Check} alt="OK" className={classNames({
+                        [styles.okHidden]: true,
+                        [styles.ok]: sixChar
+                    })}/>
+                    <img src={Close} alt="Error" className={classNames({
+                        [styles.validationError]: true,
+                        [styles.validationErrorHidden]: sixChar
+                    })}/>
+                </div>
+                <div className={styles.validationCase}>
+                    <span className={classNames({
+                        [styles.spanOk]: lowerCase
+                    })}>Pelo menos uma letra minúscula</span>
+                    <img src={Check} alt="OK" className={classNames({
+                        [styles.okHidden]: true,
+                        [styles.ok]: lowerCase
+                    })}/>
+                    <img src={Close} alt="Error" className={classNames({
+                        [styles.validationError]: true,
+                        [styles.validationErrorHidden]: lowerCase
+                    })}/>
+                </div>
+                <div className={styles.validationCase}>
+                    <span className={classNames({
+                        [styles.spanOk]: upperCase
+                    })}>Pelo menos uma letra maiúscula</span>
+                    <img src={Check} alt="OK" className={classNames({
+                        [styles.okHidden]: true,
+                        [styles.ok]: upperCase
+                    })}/>
+                    <img src={Close} alt="Error" className={classNames({
+                        [styles.validationError]: true,
+                        [styles.validationErrorHidden]: upperCase
+                    })}/>
+                </div>
+                <div className={styles.validationCase}>
+                    <span className={classNames({
+                        [styles.spanOk]: passNumber
+                    })}>Pelo menos um número</span>
+                    <img src={Check} alt="OK" className={classNames({
+                        [styles.okHidden]: true,
+                        [styles.ok]: passNumber
+                    })}/>
+                    <img src={Close} alt="Error" className={classNames({
+                        [styles.validationError]: true,
+                        [styles.validationErrorHidden]: passNumber
+                    })}/>
+                </div>
+            </div>
             <div className={styles.error} id="error">
                 <span>Ops, usuário ou senha inválidos.</span>
                 <span>Tente novamente!</span>
@@ -43,8 +103,8 @@ export default function RegisterForm() {
             }}>
                 Continuar
             </button>
-            <div>
-                <p>Já possui uma conta? Efetue o <Link to={'/'}>Login</Link></p>
+            <div className={styles.loginCall}>
+                <p>Já possui uma conta? Efetue o <Link to={'/'} className={styles.link}>Login</Link></p>
             </div>
         </form>
     );

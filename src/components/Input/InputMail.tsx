@@ -12,7 +12,7 @@ export default function InputEmail() {
     function validate(email: HTMLInputElement) {
         let error = document.getElementById('error')! as HTMLDivElement;
 
-        if(!email.value.includes("@") || !email.value.includes(".com")){
+        if(!email.value.includes("@") || !email.value.includes(".")){
 			email.style.border = "1px solid #E9B425";
 			error.style.display = "flex";
 			setEmailValid(false);

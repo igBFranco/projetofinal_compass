@@ -45,8 +45,8 @@ export default function LoginForm() {
             }}>
                 Continuar
             </button>
-            <div>
-                <p>Ainda não possui uma conta? Efetue o <Link to={'/register'}>Cadastro</Link></p>
+            <div className={styles.registerCall}>
+                <p>Ainda não possui uma conta? Efetue o <Link to={'/register'} className={styles.link}>Cadastro</Link></p>
             </div>
         </form>
     );

@@ -4,19 +4,22 @@ import Home from 'pages/Home';
 import { UserProvider } from '../common/Context/User';
 import LoginForm from 'components/LoginForm';
 import RegisterForm from 'components/RegisterForm';
+import { PasswordProvider } from 'common/Context/Password';
 export default function AppRouter() {
     return(
         <main className='container'>
             <Router>
-                <UserProvider>
-                    <Routes>
-                        <Route path='/' element={<LoginPageLayout/>}>
-                            <Route index element={<LoginForm/>}/>
-                            <Route path='register' element={<RegisterForm/>}/>
-                        </Route>
-                        <Route path='/home' element={<Home/>}/>
-                    </Routes>
-                </UserProvider>
+                <PasswordProvider>
+                    <UserProvider>
+                        <Routes>
+                            <Route path='/' element={<LoginPageLayout/>}>
+                                <Route index element={<LoginForm/>}/>
+                                <Route path='register' element={<RegisterForm/>}/>
+                            </Route>
+                            <Route path='/home' element={<Home/>}/>
+                        </Routes>
+                    </UserProvider>
+                </PasswordProvider>
             </Router>
         </main>
     );
