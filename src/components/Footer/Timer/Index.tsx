@@ -6,7 +6,7 @@ import styles from './Timer.module.scss';
 
 export default function Timer() {
     const navigate = useNavigate();
-    const [count, setCount] = useState<number>(600);
+    const [count, setCount] = useState<number>(60);
 
     async function logOut() {
         await signOut(auth);

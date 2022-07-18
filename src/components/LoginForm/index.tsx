@@ -1,10 +1,8 @@
-import InputEmail from '../Input/InputMail';
-import InputPass from '../Input/InputPass';
 import styles from './LoginForm.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../common/Context/User';
-import { browserLocalPersistence, browserSessionPersistence, onAuthStateChanged, setPersistence, signInWithEmailAndPassword } from 'firebase/auth';
+import { browserLocalPersistence, onAuthStateChanged, setPersistence, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from 'firebase-config';
 import classNames from 'classnames';
 import InputEmailNoValid from 'components/Input/InputMailNoValid';
