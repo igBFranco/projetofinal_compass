@@ -1,8 +1,9 @@
+@import 'styles/variables';
 
 .container {
     display: flex;
     justify-content: space-between;
-    
+    color: $blackSecondary;
     img {
         margin-left: 40px;
         margin-top: 25px;
