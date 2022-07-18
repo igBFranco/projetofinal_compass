@@ -12,21 +12,19 @@ export default function Home() {
     const navigate = useNavigate();
     const { user, setUser, setEmail, setPassword } = useContext(UserContext);
 
-    
+    async function logOut() {
+        setEmail('');
+        setPassword('');
+        await signOut(auth);
+        navigate('/', {replace: true});
+    }
     
     useEffect(()=> {
         let userInfo = localStorage.getItem('firebase:authUser:AIzaSyBwWKyBzBe_OpM9Es0Md2RLTKwbfPQ1-8c:[DEFAULT]');
 
-        async function logOut() {
-            setEmail('');
-            setPassword('');
-            await signOut(auth);
-            navigate('/', {replace: true});
-        }
-
-        if(userInfo === null) {
-            logOut();
-        }
+        // if(userInfo === null) {
+        //     logOut();
+        // }
         
         if(user === null ) {
             navigate('/', {replace: true});

@@ -1,6 +1,6 @@
 import { auth } from 'firebase-config';
 import { signOut } from 'firebase/auth';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Timer.module.scss';
 
@@ -13,13 +13,20 @@ export default function Timer() {
         navigate('/', {replace: true});
     }
 
+    useEffect(()=> {
+        if(count === 0) {
+            logOut();
+        }
+    }, [count, logOut])
+
     function counter(time: number = 0): any{
         setTimeout(() => {
             if(time > 0) {
                 setCount(time - 1);
                 return counter(time - 1);
             }else {
-                logOut();
+                //logOut();
+                setCount(0);
                 return counter(0);
             }
         }, 1000);
