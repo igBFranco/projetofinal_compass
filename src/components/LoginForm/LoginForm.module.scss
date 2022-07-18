@@ -4,6 +4,8 @@
     display: flex;
     flex-direction: column;
     padding-top: 6rem;
+    //padding-bottom: 6rem;
+    height: 100%;
     h2 {
         margin-top: 0;
         margin-bottom: 32px;
@@ -51,3 +53,29 @@
     }
     
 }
+
+
+@media only screen and (max-width: 1919px) {
+    .form {
+        padding-top: 6rem;
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    .form {
+        padding-top: 3.5rem;
+    }
+
+ }
+
+ @media only screen and (max-width: 1280px) {
+    .form {
+        padding-top: 3rem;
+    }
+ }
+
+ @media only screen and (max-width: 1200px) {
+    .form {
+        padding-top: 3rem;
+    }
+ }
