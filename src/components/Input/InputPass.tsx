@@ -7,11 +7,10 @@ import { PasswordContext } from 'common/Context/Password';
 
 export default function InputPass() {
     const [iconInside, setIconInside] = useState(false);
-    const { password, setPassword, setPassValid } = useContext(UserContext);
-    const { sixChar, setSixChar, lowerCase, setLowerCase, upperCase, setUpperCase, passNumber, setPassNumber } = useContext(PasswordContext);
+    const { password, setPassword, setPassValid, error, setError } = useContext(UserContext);
+    const { setSixChar, setLowerCase, setUpperCase, setPassNumber } = useContext(PasswordContext);
 
     function validate(password: HTMLInputElement) {
-        let error = document.getElementById("error")! as HTMLDivElement;
 
         let rgex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$/;
         let charQtd = /^.{6,}$/;
@@ -46,12 +45,12 @@ export default function InputPass() {
 
         if (rgex.test(password.value)) {
             password.style.border = "";
-            error.style.display = "none";
+            setError(false);
             setPassValid(true);
             
         } else {
             password.style.border = "1px solid #E9B425";
-            error.style.display = "flex";
+            setError(true);
             setPassValid(false);
         }
     }
@@ -70,7 +69,8 @@ export default function InputPass() {
                 type="password" 
                 className={classNames({
                     [styles.inputPass]: true,
-                    [styles.inputPassIcon]: iconInside
+                    [styles.inputPassIcon]: iconInside,
+                    [styles.inputError]: error
                 })} 
                 value={password} 
                 placeholder="Senha" 

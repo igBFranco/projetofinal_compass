@@ -5,10 +5,12 @@ UserContext.displayName = "UserContext";
 
 export const UserProvider = ({ children }) => {
     const [email, setEmail] = useState("");
-    const [emailValid, setEmailValid] = useState(true);
+    const [emailValid, setEmailValid] = useState(false);
     const [password, setPassword] = useState("");
-    const [passValid, setPassValid] = useState(true);
+    const [passValid, setPassValid] = useState(false);
     const [user, setUser] = useState({});
+    const [error, setError] = useState(false);
+    
     return (
         <UserContext.Provider value={ {
             email, 
@@ -20,7 +22,9 @@ export const UserProvider = ({ children }) => {
             passValid,
             setPassValid,
             user, 
-            setUser
+            setUser,
+            error, 
+            setError
         }}>
             {children}
         </UserContext.Provider>

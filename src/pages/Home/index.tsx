@@ -1,19 +1,42 @@
+import { UserContext } from 'common/Context/User';
 import { auth } from 'firebase-config';
-import { useEffect } from 'react';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import Navbar from '../../components/Navbar';
 import styles from './Home.module.scss'
 
 export default function Home() {
-    const user = auth.currentUser;
+    //const user = auth.currentUser;
     const navigate = useNavigate();
+    const { user, setUser, setEmail, setPassword } = useContext(UserContext);
+
+    
     
     useEffect(()=> {
-        if(user === null) {
+        let userInfo = localStorage.getItem('firebase:authUser:AIzaSyBwWKyBzBe_OpM9Es0Md2RLTKwbfPQ1-8c:[DEFAULT]');
+
+        async function logOut() {
+            setEmail('');
+            setPassword('');
+            await signOut(auth);
             navigate('/', {replace: true});
         }
-    }, [user, navigate])
+
+        if(userInfo === null) {
+            logOut();
+        }
+        
+        if(user === null ) {
+            navigate('/', {replace: true});
+        }
+
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser)
+        })
+        
+    }, [user, navigate, setUser, setEmail, setPassword])
 
     return(
         <div className={styles.container}>

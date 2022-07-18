@@ -35,6 +35,7 @@ export default function Weather() {
             const { main, name } = data;
             setCity(`${name} - DF`);
             setTemp(Math.round(main.temp));
+            setIsLoading(false);
             }
         )
 

@@ -5,23 +5,10 @@ import styles from './Input.module.scss';
 import User from 'assets/icon-user.svg';
 
 
-export default function InputEmail() {
+export default function InputEmailNoValid() {
     const [iconInside, setIconInside] = useState(false);
     const { email, setEmail, setEmailValid, error, setError } = useContext(UserContext);
 
-    function validate(email: HTMLInputElement) {
-        let rgex = /^([a-z]){1,}([a-z0-9._-]){1,}([@]){1}([a-z]){2,}([.]){1}([a-z]){2,}([.]?){1}([a-z]?){2,}$/i;
-
-        if(rgex.test(email.value)){
-			email.style.border = "";
-			setError(false);
-			setEmailValid(true);
-		}else {
-            email.style.border = "1px solid #E9B425";
-			setError(true);
-			setEmailValid(false);
-		}
-    }
 
     useEffect(()=> {
         if(email !== ""){
@@ -38,8 +25,7 @@ export default function InputEmail() {
                     [styles.inputUserIcon]: iconInside,
                     [styles.inputError]: error
                 })} value={email} placeholder="Usuário" onChange={(event)=> (
-                setEmail(event.target.value),
-                validate(event.target)
+                setEmail(event.target.value)
             )}
             />  
             <img src={User} alt="User Icon" className={classNames({

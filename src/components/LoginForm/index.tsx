@@ -4,26 +4,32 @@ import styles from './LoginForm.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../common/Context/User';
-import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import { browserLocalPersistence, browserSessionPersistence, onAuthStateChanged, setPersistence, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from 'firebase-config';
+import classNames from 'classnames';
+import InputEmailNoValid from 'components/Input/InputMailNoValid';
+import InputPassNoValid from 'components/Input/InputPassNoValid';
 
 export default function LoginForm() {
     const navigate = useNavigate();
-    const { emailValid, passValid, setUser, email, password, setEmail, setPassword } = useContext(UserContext);
+    const { setUser, email, password, setEmail, setPassword, setError, error } = useContext(UserContext);
 
     async function login() {
-        try {
-            const user =  await signInWithEmailAndPassword(auth, email, password);
-            setEmail('');
-            setPassword('');
-            console.log(user);
-            navigate('/home');
-        } catch (error) {
-            console.log(error);
-        }
+        setPersistence(auth, browserLocalPersistence).then(async ()=> {
+            try {
+                const user =  await signInWithEmailAndPassword(auth, email, password);
+                setEmail('');
+                setPassword('');
+                console.log(user);
+                navigate('/home');
+            } catch (error) {
+                setError(true);
+            }
+        })
     }
 
     onAuthStateChanged(auth, (currentUser) => {
+        //localStorage.setItem('user', JSON.stringify(currentUser));
         setUser(currentUser);
 
     })
@@ -31,17 +37,18 @@ export default function LoginForm() {
     return(
         <form className={styles.form}>
             <h2>Login</h2>
-            <InputEmail/>
-            <InputPass/>
-            <div className={styles.error} id="error">
+            <InputEmailNoValid/>
+            <InputPassNoValid/>
+            <div className={classNames({
+                [styles.error]: true,
+                [styles.errorShow]: error
+            })} id="error">
                 <span>Ops, usuário ou senha inválidos.</span>
                 <span>Tente novamente!</span>
             </div>
             <button className={styles.button} onClick={(event)=> {
                 event.preventDefault();
                 login();
-                if(emailValid && passValid){
-                }
             }}>
                 Continuar
             </button>

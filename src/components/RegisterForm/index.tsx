@@ -13,7 +13,7 @@ import { PasswordContext } from 'common/Context/Password';
 
 export default function RegisterForm() {
     const navigate = useNavigate();
-    const { email, password, emailValid, passValid, setUser } = useContext(UserContext);
+    const { email, password, emailValid, passValid } = useContext(UserContext);
     const { sixChar, lowerCase, upperCase, passNumber } = useContext(PasswordContext);
 
     async function register() {
@@ -27,7 +27,7 @@ export default function RegisterForm() {
     }
 
     onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
+        //setUser(currentUser);
     })
     
 
@@ -97,9 +97,9 @@ export default function RegisterForm() {
             </div>
             <button className={styles.button} onClick={(event)=> {
                 event.preventDefault();
-                //if(emailValid && passValid){
+                if(emailValid && passValid){
                     register();
-               // }
+                }
             }}>
                 Continuar
             </button>
