@@ -7,7 +7,7 @@ import { PasswordContext } from 'common/Context/Password';
 
 export default function InputPass() {
     const [iconInside, setIconInside] = useState(false);
-    const { password, setPassword, setPassValid, error, setError } = useContext(UserContext);
+    const { password, setPassword, setPassValid, errorPass, setErrorPass } = useContext(UserContext);
     const { setSixChar, setLowerCase, setUpperCase, setPassNumber } = useContext(PasswordContext);
 
     function validate(password: HTMLInputElement) {
@@ -45,12 +45,12 @@ export default function InputPass() {
 
         if (rgex.test(password.value)) {
             password.style.border = "";
-            setError(false);
+            setErrorPass(false);
             setPassValid(true);
             
         } else {
             password.style.border = "1px solid #E9B425";
-            setError(true);
+            setErrorPass(true);
             setPassValid(false);
         }
     }
@@ -70,7 +70,7 @@ export default function InputPass() {
                 className={classNames({
                     [styles.inputPass]: true,
                     [styles.inputPassIcon]: iconInside,
-                    [styles.inputError]: error
+                    [styles.inputError]: errorPass
                 })} 
                 value={password} 
                 placeholder="Senha" 

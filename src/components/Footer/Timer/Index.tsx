@@ -8,16 +8,16 @@ export default function Timer() {
     const navigate = useNavigate();
     const [count, setCount] = useState<number>(60);
 
-    async function logOut() {
-        await signOut(auth);
-        navigate('/', {replace: true});
-    }
-
+    
     useEffect(()=> {
+        async function logOut() {
+            await signOut(auth);
+            navigate('/', {replace: true});
+        }
         if(count === 0) {
             logOut();
         }
-    }, [count, logOut])
+    }, [count, navigate])
 
     function counter(time: number = 0): any{
         setTimeout(() => {

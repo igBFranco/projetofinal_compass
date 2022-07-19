@@ -7,18 +7,18 @@ import User from 'assets/icon-user.svg';
 
 export default function InputEmail() {
     const [iconInside, setIconInside] = useState(false);
-    const { email, setEmail, setEmailValid, error, setError } = useContext(UserContext);
+    const { email, setEmail, setEmailValid, errorMail, setErrorMail } = useContext(UserContext);
 
     function validate(email: HTMLInputElement) {
         let rgex = /^([a-z]){1,}([a-z0-9._-]){1,}([@]){1}([a-z]){2,}([.]){1}([a-z]){2,}([.]?){1}([a-z]?){2,}$/i;
 
         if(rgex.test(email.value)){
 			email.style.border = "";
-			setError(false);
+			setErrorMail(false);
 			setEmailValid(true);
 		}else {
             email.style.border = "1px solid #E9B425";
-			setError(true);
+			setErrorMail(true);
 			setEmailValid(false);
 		}
     }
@@ -36,7 +36,7 @@ export default function InputEmail() {
             <input type="email" className={classNames({
                     [styles.inputEmail]: true,
                     [styles.inputUserIcon]: iconInside,
-                    [styles.inputError]: error
+                    [styles.inputError]: errorMail
                 })} value={email} placeholder="Usuário" onChange={(event)=> (
                 setEmail(event.target.value),
                 validate(event.target)

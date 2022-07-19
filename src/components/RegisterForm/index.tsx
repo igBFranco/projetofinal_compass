@@ -93,8 +93,11 @@ export default function RegisterForm() {
                     })}/>
                 </div>
             </div>
-            <div className={styles.error} id="error">
-                <span>Ops, usuário ou senha inválidos.</span>
+            <div className={classNames({
+                [styles.error]: true,
+                [styles.errorShow]: !emailValid
+            })} id="error">
+                <span>Ops, email inválido.</span>
                 <span>Tente novamente!</span>
             </div>
             <button className={styles.button} onClick={(event)=> {
