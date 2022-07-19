@@ -6,7 +6,7 @@ import { UserContext } from '../../common/Context/User';
 
 export default function InputPassNoValid() {
     const [iconInside, setIconInside] = useState(false);
-    const { password, setPassword, error } = useContext(UserContext);
+    const { password, setPassword, errorPass } = useContext(UserContext);
    
 
     useEffect(()=> {
@@ -24,7 +24,7 @@ export default function InputPassNoValid() {
                 className={classNames({
                     [styles.inputPass]: true,
                     [styles.inputPassIcon]: iconInside,
-                    [styles.inputError]: error
+                    [styles.inputError]: errorPass
                 })} 
                 value={password} 
                 placeholder="Senha" 

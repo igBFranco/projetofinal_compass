@@ -7,7 +7,7 @@ import User from 'assets/icon-user.svg';
 
 export default function InputEmailNoValid() {
     const [iconInside, setIconInside] = useState(false);
-    const { email, setEmail, setEmailValid, error, setError } = useContext(UserContext);
+    const { email, setEmail, setEmailValid, errorMail, setErrorMail } = useContext(UserContext);
 
 
     useEffect(()=> {
@@ -23,7 +23,7 @@ export default function InputEmailNoValid() {
             <input type="email" className={classNames({
                     [styles.inputEmail]: true,
                     [styles.inputUserIcon]: iconInside,
-                    [styles.inputError]: error
+                    [styles.inputError]: errorMail
                 })} value={email} placeholder="Usuário" onChange={(event)=> (
                 setEmail(event.target.value)
             )}

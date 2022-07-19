@@ -79,3 +79,19 @@
         padding-top: 3rem;
     }
  }
+
+ @media only screen and (max-width: 768px) {
+    .form {
+        .button {
+            width: 320px;
+        }
+        .error{
+            width: 320px;
+        }
+
+        .registerCall {
+            width: 320px;
+            text-align: center;
+        }
+    }
+}

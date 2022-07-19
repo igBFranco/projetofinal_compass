@@ -10,7 +10,7 @@ import InputPassNoValid from 'components/Input/InputPassNoValid';
 
 export default function LoginForm() {
     const navigate = useNavigate();
-    const { setUser, email, password, setEmail, setPassword, setError, error } = useContext(UserContext);
+    const { setUser, email, password, setEmail, setPassword, setErrorMail, setErrorPass, errorMail,  } = useContext(UserContext);
 
     async function login() {
         setPersistence(auth, browserLocalPersistence).then(async ()=> {
@@ -21,7 +21,8 @@ export default function LoginForm() {
                 console.log(user);
                 navigate('/home');
             } catch (error) {
-                setError(true);
+                setErrorMail(true);
+                setErrorPass(true);
             }
         })
     }
@@ -39,7 +40,7 @@ export default function LoginForm() {
             <InputPassNoValid/>
             <div className={classNames({
                 [styles.error]: true,
-                [styles.errorShow]: error
+                [styles.errorShow]: errorMail
             })} id="error">
                 <span>Ops, usuário ou senha inválidos.</span>
                 <span>Tente novamente!</span>
