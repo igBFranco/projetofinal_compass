@@ -6,8 +6,8 @@
     background: linear-gradient(#33383D, #1C1D20);
     position: fixed;
     bottom: 0;
-    left: 0;
-    z-index: 10;
+    // left: 0;
+    //z-index: 10;
     display: flex;
     flex-direction: row;
 
@@ -94,17 +94,39 @@
 @media only screen and (max-width: 425px) {
    .footer {
     flex-direction: column;
-    position: absolute;
-    z-index: 0;
-    height: 300px;
-
+    position: initial;
+    // bottom: 0;
+    //left: auto;
+    height: 100%;
+    //margin-top: 100px;
     p{
-        margin: 0;
-        width: 100%;
+        margin: 20px;
+        width: 90%;
+        text-align: center;
+    }
+
+    hr {
+       display: none;
     }
 
     .buttons {
-        flex-direction: column;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        .next {
+            margin-left: 0;
+            width: 50%;
+            button {
+                width: 100%;
+            }
+        }
+        .logout {
+            width: 50%;
+            button {
+                width: 100%;
+            }
+        }
     }
    }
 }
