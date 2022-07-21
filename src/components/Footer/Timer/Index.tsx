@@ -6,7 +6,7 @@ import styles from './Timer.module.scss';
 
 export default function Timer() {
     const navigate = useNavigate();
-    const [count, setCount] = useState<number>(60);
+    const [count, setCount] = useState<number>(Number(localStorage.getItem('count')));
 
     
     useEffect(()=> {
@@ -14,10 +14,15 @@ export default function Timer() {
             await signOut(auth);
             navigate('/', {replace: true});
         }
-        if(count === 0) {
-            logOut();
+        if(count !== 0) {
+            localStorage.setItem('count', count.toString());
+            counter(Number(localStorage.getItem('count')));
         }
-    }, [count, navigate])
+        if(count === 0) {
+            localStorage.setItem('count', count.toString());
+            //logOut();
+        }
+    }, [count, navigate, counter])
 
     function counter(time: number = 0): any{
         setTimeout(() => {
@@ -32,7 +37,7 @@ export default function Timer() {
     }
 
     return(
-        <section className={styles.container} onLoad={counter(count)}>
+        <section className={styles.container} >
             <p className={styles.refresh}>
                 Application refresh in
             </p>

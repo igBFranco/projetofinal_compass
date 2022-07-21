@@ -38,7 +38,6 @@ export default function Weather() {
             setIsLoading(false);
             }
         )
-
     }
 
     return(

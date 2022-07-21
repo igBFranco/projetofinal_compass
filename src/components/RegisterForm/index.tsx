@@ -13,7 +13,7 @@ import { PasswordContext } from 'common/Context/Password';
 
 export default function RegisterForm() {
     const navigate = useNavigate();
-    const { email, password, emailValid, passValid, setUser, setError } = useContext(UserContext);
+    const { email, password, emailValid, passValid, setUser, setError, setEmail, setPassword } = useContext(UserContext);
     const { sixChar, lowerCase, upperCase, passNumber } = useContext(PasswordContext);
 
     async function register() {
@@ -21,6 +21,9 @@ export default function RegisterForm() {
         try {
             const user =  await createUserWithEmailAndPassword(auth, email, password);
             console.log(user);
+            setEmail('');
+            setPassword('');
+            localStorage.setItem('count', '60');
             navigate('/home');
         } catch (error: any) {
             setError(true);

@@ -85,3 +85,28 @@ body {
        }
     }
 }
+
+@media only screen and (max-width: 425px) {
+    body {
+        background-size: 0;
+        //background-position: -150px 60vh;
+    }
+
+    .container {
+        .content {
+         right: 5vw;
+ 
+         h2 {
+             font-size: 16px;
+         }
+ 
+         p {
+             font-size: 12px;
+         }
+ 
+         h1 {
+             font-size: 28px;
+         }
+        }
+     }
+}

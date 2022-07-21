@@ -20,6 +20,7 @@ export default function LoginForm() {
                 setPassword('');
                 setErrorMail(false);
                 setErrorPass(false);
+                localStorage.setItem('count', '60');
                 console.log(user);
                 navigate('/home');
             } catch (error) {
