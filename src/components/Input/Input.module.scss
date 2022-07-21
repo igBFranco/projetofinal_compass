@@ -78,13 +78,21 @@
 }
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 425px) {
     .input {
         .inputEmail {
-            width: 300px;
+            width: 100%;
         }
         .inputPass {
-            width: 300px;
+            width: 100%;
+        }
+
+        .inputUserIcon{
+            background-position: 93%;
+        }
+
+        .inputPassIcon{
+            background-position: 93%;
         }
     }
 }

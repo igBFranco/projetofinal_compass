@@ -12,7 +12,6 @@
         width: 50%;
         height: 100%;
         padding-left: 15%;
-        //padding-right: 15%;
         padding-top: 10%;
         p{
             margin: 0;
@@ -85,17 +84,23 @@
     }
  }
 
- @media only screen and (max-width: 768px) {
+
+ @media only screen and (max-width: 425px) {
     .container {
         flex-direction: column-reverse;
         .login {
             width: 100%;
+            padding-right: 7%;
             .greeting {
+                font-size: 45px;
                 margin-top: 15px;
             }
         }
         .banner {
             width: 100%;
+            .logo {
+                width: 80%;
+            }
         }
     }
  }

@@ -10,7 +10,7 @@ import InputPassNoValid from 'components/Input/InputPassNoValid';
 
 export default function LoginForm() {
     const navigate = useNavigate();
-    const { setUser, email, password, setEmail, setPassword, setErrorMail, setErrorPass, errorMail,  } = useContext(UserContext);
+    const { setUser, email, password, setEmail, setPassword, setErrorMail, setErrorPass, errorMail } = useContext(UserContext);
 
     async function login() {
         setPersistence(auth, browserLocalPersistence).then(async ()=> {
@@ -18,6 +18,8 @@ export default function LoginForm() {
                 const user =  await signInWithEmailAndPassword(auth, email, password);
                 setEmail('');
                 setPassword('');
+                setErrorMail(false);
+                setErrorPass(false);
                 console.log(user);
                 navigate('/home');
             } catch (error) {
@@ -30,6 +32,7 @@ export default function LoginForm() {
     onAuthStateChanged(auth, (currentUser) => {
         //localStorage.setItem('user', JSON.stringify(currentUser));
         setUser(currentUser);
+        localStorage.setItem('user', JSON.stringify(currentUser));
 
     })
 

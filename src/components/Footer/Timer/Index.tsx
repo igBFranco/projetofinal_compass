@@ -25,7 +25,6 @@ export default function Timer() {
                 setCount(time - 1);
                 return counter(time - 1);
             }else {
-                //logOut();
                 setCount(0);
                 return counter(0);
             }
