@@ -92,7 +92,7 @@
 }
 
 
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 768px) {
     .form {
         .button {
             width: 100%;
@@ -119,12 +119,24 @@
     }
 }
 
-@media only screen and (max-width: 330px) {
+@media only screen and (max-width: 345px) {
     .form {
         .validation {
             .validationCase {
                 span {
-                    padding: 5.5px;
+                    padding: 5px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 335px) {
+    .form {
+        .validation {
+            .validationCase {
+                span {
+                    font-size: 12px;
                 }
             }
         }

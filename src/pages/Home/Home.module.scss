@@ -87,10 +87,10 @@ body {
     }
 }
 
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 768px) {
     body {
-        background-size: 0;
-        background-position: -30px 550px;
+        background-size: 50%;
+        background-position: -30px 300px;
     }
 
     .container {
@@ -111,4 +111,10 @@ body {
          }
         }
      }
+}
+
+@media only screen and (max-width: 700px) {
+    body {
+        background-size: 0;
+    }
 }

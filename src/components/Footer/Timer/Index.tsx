@@ -20,21 +20,23 @@ export default function Timer() {
         }
         if(count === 0) {
             localStorage.setItem('count', count.toString());
-            //logOut();
+            logOut();
         }
-    }, [count, navigate, counter])
 
-    function counter(time: number = 0): any{
-        setTimeout(() => {
-            if(time > 0) {
-                setCount(time - 1);
-                return counter(time - 1);
-            }else {
-                setCount(0);
-                return counter(0);
-            }
-        }, 1000);
-    }
+        function counter(time: number = 0): any{
+            setTimeout(() => {
+                if(time > 0) {
+                    setCount(time - 1);
+                    return counter(time - 1);
+                }else {
+                    setCount(0);
+                    return counter(0);
+                }
+            }, 1000);
+        }
+    }, [count, navigate])
+
+    
 
     return(
         <section className={styles.container} >
