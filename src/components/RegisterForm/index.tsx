@@ -4,7 +4,7 @@ import styles from './RegisterForm.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../common/Context/User';
-import { browserLocalPersistence, createUserWithEmailAndPassword, onAuthStateChanged, setPersistence } from 'firebase/auth';
+import { browserSessionPersistence, createUserWithEmailAndPassword, onAuthStateChanged, setPersistence } from 'firebase/auth';
 import { auth } from 'firebase-config';
 import Check from "assets/check.svg";
 import Close from "assets/close.svg";
@@ -17,7 +17,7 @@ export default function RegisterForm() {
     const { sixChar, lowerCase, upperCase, passNumber } = useContext(PasswordContext);
 
     async function register() {
-        setPersistence(auth, browserLocalPersistence).then(async ()=> {
+        setPersistence(auth, browserSessionPersistence).then(async ()=> {
         try {
             const user =  await createUserWithEmailAndPassword(auth, email, password);
             console.log(user);

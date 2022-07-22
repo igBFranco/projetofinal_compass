@@ -2,7 +2,7 @@ import styles from './LoginForm.module.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../common/Context/User';
-import { browserLocalPersistence, onAuthStateChanged, setPersistence, signInWithEmailAndPassword } from 'firebase/auth';
+import { browserSessionPersistence, onAuthStateChanged, setPersistence, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from 'firebase-config';
 import classNames from 'classnames';
 import InputEmailNoValid from 'components/Input/InputMailNoValid';
@@ -13,7 +13,7 @@ export default function LoginForm() {
     const { setUser, email, password, setEmail, setPassword, setErrorMail, setErrorPass, errorMail } = useContext(UserContext);
 
     async function login() {
-        setPersistence(auth, browserLocalPersistence).then(async ()=> {
+        setPersistence(auth, browserSessionPersistence).then(async ()=> {
             try {
                 const user =  await signInWithEmailAndPassword(auth, email, password);
                 setEmail('');
