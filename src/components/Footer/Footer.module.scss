@@ -85,9 +85,28 @@
 @media only screen and (max-width: 1400px) {
     .footer {
         p {
-            margin-left: 12vw;
+            margin-left: 8vw;
         }
-      
+        .buttons {
+            .next {
+                margin-left: 14.2vw;
+                
+            }
+        }  
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .footer {
+        p {
+            margin-left: 4vw;
+        }
+        .buttons {
+            .next {
+                margin-left: 8.2vw;
+                
+            }
+        }  
     }
 }
 
