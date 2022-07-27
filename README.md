@@ -4,6 +4,7 @@ Projeto desenvolvido para o Programa de Bolsas Front End React - Compass Uol
 
 ## Tecnologias Utilizadas:
 - React com TypeScript
+- SCSS 
 - Firebase Auth 
 
 
